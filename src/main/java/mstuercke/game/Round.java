@@ -5,21 +5,35 @@ import mstuercke.player.Player;
 import java.util.Optional;
 
 public class Round {
-	private final Game game;
+	private Player player1;
+	private Player player2;
 	private Gesture player1Gesture;
 	private Gesture player2Gesture;
 
-	Round( Game game ) {
-		this.game = game;
-		this.player1Gesture = game.getPlayer1().nextGesture();
-		this.player2Gesture = game.getPlayer2().nextGesture();
+	private Round( Player player1, Player player2 ) {
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 
 	/**
-	 * @return the game, the round belongs to
+	 * Creates a new round. The gestures will be instantly calculated.
+	 *
+	 * @param player1 The first player
+	 * @param player2 The second player
 	 */
-	public Game getGame() {
-		return game;
+	static Round play( Player player1, Player player2 ) {
+		Round round = new Round( player1, player2 );
+		round.player1Gesture = player1.nextGesture();
+		round.player2Gesture = player2.nextGesture();
+		return round;
+	}
+
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	public Player getPlayer2() {
+		return player2;
 	}
 
 	/**
@@ -43,9 +57,9 @@ public class Round {
 	 */
 	public Optional<Player> getWinner() {
 		if ( player2Gesture.losesAgainst( player1Gesture ) )
-			return Optional.of( game.getPlayer1() );
+			return Optional.of( player1 );
 		else if ( player1Gesture.losesAgainst( player2Gesture ) )
-			return Optional.of( game.getPlayer2() );
+			return Optional.of( player2 );
 		else
 			return Optional.empty();
 	}

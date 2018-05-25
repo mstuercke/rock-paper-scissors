@@ -8,10 +8,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class Game {
-	private final Player player1;
-	private final Player player2;
-	private final int totalRounds;
-	private final ArrayList<Round> rounds;
+	private Player player1;
+	private Player player2;
+	private ArrayList<Round> rounds = new ArrayList<>();
+
+	private Game( Player player1, Player player2 ) {
+		this.player1 = player1;
+		this.player2 = player2;
+	}
 
 	/**
 	 * Creates a new game. The rounds will be instantly calculated.
@@ -20,19 +24,15 @@ public class Game {
 	 * @param player2     The second player
 	 * @param totalRounds The amount of rounds that should be played together
 	 */
-	Game( Player player1, Player player2, int totalRounds ) {
-		this.player1 = player1;
-		this.player2 = player2;
-		this.totalRounds = totalRounds;
-		this.rounds = createRounds();
-	}
+	static Game play( Player player1, Player player2, int totalRounds ) {
+		// create new game instance
+		Game game = new Game( player1, player2 );
 
-	private ArrayList<Round> createRounds() {
-		ArrayList<Round> rounds = new ArrayList<>();
+		// play rounds
 		for ( int i = 0; i < totalRounds; i++ )
-			rounds.add( new Round( this ) );
+			game.rounds.add( Round.play( player1, player2 ) );
 
-		return rounds;
+		return game;
 	}
 
 	public Player getPlayer1() {

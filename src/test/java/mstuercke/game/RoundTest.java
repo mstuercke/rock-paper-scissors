@@ -14,16 +14,11 @@ import static org.mockito.Mockito.*;
 public class RoundTest {
 	private static Player player1;
 	private static Player player2;
-	private static Game game;
 
 	@Before
 	public void setup() {
 		player1 = mock( Player.class );
 		player2 = mock( Player.class );
-
-		game = mock( Game.class );
-		when( game.getPlayer1() ).thenReturn( player1 );
-		when( game.getPlayer2() ).thenReturn( player2 );
 	}
 
 	@Test
@@ -53,6 +48,6 @@ public class RoundTest {
 		when( player1.nextGesture() ).thenReturn( player1Gesture );
 		when( player2.nextGesture() ).thenReturn( player2Gesture );
 
-		return new Round( game ).getWinner();
+		return Round.play( player1, player2 ).getWinner();
 	}
 }

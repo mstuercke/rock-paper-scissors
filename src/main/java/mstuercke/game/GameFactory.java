@@ -12,12 +12,12 @@ import java.util.Scanner;
 public class GameFactory {
 	private final Scanner scanner = new Scanner( System.in );
 
-	public Game createGame() {
+	public Game playGame() {
 		Player player1 = new PlayerFactory().createPlayer( "Thor" );
 		Player player2 = new PlayerFactory().createPlayer( "Hulk" );
 		int rounds = readRounds();
 
-		return new Game( player1, player2, rounds );
+		return Game.play( player1, player2, rounds );
 	}
 
 	private int readRounds() {

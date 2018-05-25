@@ -8,7 +8,7 @@ import mstuercke.player.Player;
 public class Main {
 	public static void main( String[] args ) {
 		// create game
-		Game game = new GameFactory().createGame();
+		Game game = new GameFactory().playGame();
 
 		// print round results
 		System.out.println( "Rounds:" );
@@ -25,12 +25,12 @@ public class Main {
 	private static void printRound( Round round ) {
 		// player 1
 		System.out.println( String.format( "%s: %s",
-				round.getGame().getPlayer1().getName(),
+				round.getPlayer1().getName(),
 				round.getPlayer1Gesture().getName() ) );
 
 		// player 2
 		System.out.println( String.format( "%s: %s",
-				round.getGame().getPlayer2().getName(),
+				round.getPlayer2().getName(),
 				round.getPlayer2Gesture().getName() ) );
 
 		// winner
