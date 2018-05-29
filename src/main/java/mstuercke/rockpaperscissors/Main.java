@@ -1,9 +1,9 @@
-package mstuercke;
+package mstuercke.rockpaperscissors;
 
-import mstuercke.game.Game;
-import mstuercke.game.GameFactory;
-import mstuercke.game.Round;
-import mstuercke.player.Player;
+import mstuercke.rockpaperscissors.game.Game;
+import mstuercke.rockpaperscissors.game.GameFactory;
+import mstuercke.rockpaperscissors.game.Round;
+import mstuercke.rockpaperscissors.player.Player;
 
 public class Main {
 	public static void main( String[] args ) {

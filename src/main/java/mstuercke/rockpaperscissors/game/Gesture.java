@@ -1,4 +1,4 @@
-package mstuercke.game;
+package mstuercke.rockpaperscissors.game;
 
 /**
  * This enum contains all possible gestures, that could be used in a round

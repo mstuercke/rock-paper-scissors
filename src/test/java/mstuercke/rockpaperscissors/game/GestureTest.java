@@ -1,4 +1,4 @@
-package mstuercke.game;
+package mstuercke.rockpaperscissors.game;
 
 import org.junit.Assert;
 import org.junit.Test;

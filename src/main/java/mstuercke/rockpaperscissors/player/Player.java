@@ -1,7 +1,7 @@
-package mstuercke.player;
+package mstuercke.rockpaperscissors.player;
 
 
-import mstuercke.game.Gesture;
+import mstuercke.rockpaperscissors.game.Gesture;
 
 public class Player {
 	private final String name;

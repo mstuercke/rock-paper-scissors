@@ -1,6 +1,6 @@
-package mstuercke.player;
+package mstuercke.rockpaperscissors.player;
 
-import mstuercke.game.Gesture;
+import mstuercke.rockpaperscissors.game.Gesture;
 
 import java.util.Arrays;
 import java.util.Optional;

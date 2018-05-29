@@ -1,8 +1,8 @@
-package mstuercke.game;
+package mstuercke.rockpaperscissors.game;
 
 
-import mstuercke.player.Player;
-import mstuercke.player.PlayerFactory;
+import mstuercke.rockpaperscissors.player.Player;
+import mstuercke.rockpaperscissors.player.PlayerFactory;
 
 import java.util.Scanner;
 

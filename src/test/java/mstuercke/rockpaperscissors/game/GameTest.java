@@ -1,6 +1,7 @@
-package mstuercke.game;
+package mstuercke.rockpaperscissors.game;
 
-import mstuercke.player.Player;
+import mstuercke.rockpaperscissors.player.Player;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,7 +59,7 @@ public class GameTest {
 
 		// assert
 		assertTrue( game.getWinner().isPresent() );
-		assertEquals( player1, game.getWinner().get() );
+		Assert.assertEquals( player1, game.getWinner().get() );
 	}
 
 	@Test
@@ -70,7 +71,7 @@ public class GameTest {
 
 		// assert
 		assertTrue( game.getWinner().isPresent() );
-		assertEquals( player2, game.getWinner().get() );
+		Assert.assertEquals( player2, game.getWinner().get() );
 	}
 
 	@Test

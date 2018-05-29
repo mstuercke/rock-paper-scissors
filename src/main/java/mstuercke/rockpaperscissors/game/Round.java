@@ -1,6 +1,6 @@
-package mstuercke.game;
+package mstuercke.rockpaperscissors.game;
 
-import mstuercke.player.Player;
+import mstuercke.rockpaperscissors.player.Player;
 
 import java.util.Optional;
 

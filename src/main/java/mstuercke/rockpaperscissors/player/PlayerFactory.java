@@ -1,4 +1,4 @@
-package mstuercke.player;
+package mstuercke.rockpaperscissors.player;
 
 
 import java.util.Optional;
