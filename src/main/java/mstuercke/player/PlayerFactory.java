@@ -1,6 +1,7 @@
 package mstuercke.player;
 
 
+import java.util.Optional;
 import java.util.Scanner;
 
 import static java.util.Arrays.stream;
@@ -12,15 +13,25 @@ public class PlayerFactory {
 	private final Scanner scanner = new Scanner( System.in );
 
 	public Player createPlayer( String name ) {
-		System.out.print( String.format( "Enter the strategy for Player %s (number): ", name ) );
-		return Strategy
-				.getByOrdinal( scanner.nextInt() )
-				.map( strategy -> new Player( name, strategy ) )
-				.orElseGet( () -> {
-					System.out.println( "Error: Invalid strategy input. Please input the number of the strategy." );
-					printStrategies();  // recursive call, until valid strategy was got
-					return createPlayer( name );
-				} );
+		printStrategies();
+
+		// repeat loop, until valid strategy was received
+		while ( true ) {
+			Optional<Strategy> strategy = readStrategy( name );
+
+			if ( strategy.isPresent() ) {
+				return new Player( name, strategy.get() );
+			} else {
+				System.out.println( "Error: Invalid strategy input. Please input the number of the strategy." );
+				printStrategies();
+				System.out.println();
+			}
+		}
+	}
+
+	private Optional<Strategy> readStrategy( String name ) {
+		System.out.print( String.format( "Enter the number of the strategy for Player %s: ", name ) );
+		return Strategy.getByOrdinal( scanner.nextInt() );
 	}
 
 	private void printStrategies() {
@@ -28,6 +39,5 @@ public class PlayerFactory {
 		stream( Strategy.values() )
 				.map( strategy -> String.format( "%s = %s", strategy.ordinal(), strategy.getName() ) )
 				.forEach( System.out::println );
-		System.out.println();
 	}
 }
