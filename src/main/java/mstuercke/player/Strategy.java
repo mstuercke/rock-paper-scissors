@@ -1,7 +1,10 @@
 package mstuercke.player;
 
+import mstuercke.game.Gesture;
+
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * This enum contains all strategies, that could be used by a player
@@ -28,4 +31,29 @@ public enum Strategy {
 				.findFirst();
 	}
 
+	/**
+	 * Responds a new gesture, based on the strategy
+	 *
+	 * @return new gesture
+	 */
+	public Gesture nextGesture() {
+		switch ( this ) {
+			case RANDOM:
+				int gestureOrdinal = new Random().nextInt( Gesture.values().length );
+				return Gesture.values()[gestureOrdinal];
+
+			case ROCK_ONLY:
+				return Gesture.ROCK;
+
+			case SCISSORS_ONLY:
+				return Gesture.SCISSORS;
+
+			case PAPER_ONLY:
+				return Gesture.PAPER;
+
+			default:
+				throw new UnsupportedOperationException(
+						String.format( "The strategy %s is not supported", this ) );
+		}
+	}
 }

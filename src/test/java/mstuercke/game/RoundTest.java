@@ -6,24 +6,27 @@ import org.junit.Test;
 
 import java.util.Optional;
 
-import static mstuercke.game.Gesture.PAPER;
-import static mstuercke.game.Gesture.SCISSORS;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class RoundTest {
 	private static Player player1;
 	private static Player player2;
+	private static Gesture loosingGesture;
+	private static Gesture winningGesture;
 
 	@Before
 	public void setup() {
 		player1 = mock( Player.class );
 		player2 = mock( Player.class );
+
+		loosingGesture = Gesture.values()[0];
+		winningGesture = loosingGesture.getWeakness();
 	}
 
 	@Test
 	public void player1Wins() {
-		Optional<Player> winner = calculateWinner( SCISSORS, PAPER );
+		Optional<Player> winner = calculateWinner( winningGesture, loosingGesture );
 
 		assertTrue( winner.isPresent() );
 		assertEquals( player1, winner.get() );
@@ -31,7 +34,7 @@ public class RoundTest {
 
 	@Test
 	public void player2Wins() {
-		Optional<Player> winner = calculateWinner( PAPER, SCISSORS );
+		Optional<Player> winner = calculateWinner( loosingGesture, winningGesture );
 
 		assertTrue( winner.isPresent() );
 		assertEquals( player2, winner.get() );
@@ -39,7 +42,7 @@ public class RoundTest {
 
 	@Test
 	public void noOneWins() {
-		Optional<Player> winner = calculateWinner( SCISSORS, SCISSORS );
+		Optional<Player> winner = calculateWinner( winningGesture, winningGesture );
 
 		assertFalse( winner.isPresent() );
 	}
